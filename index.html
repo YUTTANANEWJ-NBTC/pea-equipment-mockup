@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEA Equipment Tracker Mockup</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">แผงควบคุมการตรวจจับ (Detection Control Panel)</h2>
+            
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="transformer" style="border-left: 4px solid #32cd32;">[หม้อแปลง (Transformers)]</button>
+                <button class="filter-btn active" data-filter="insulator" style="border-left: 4px solid #00ced1;">[ลูกถ้วยฉนวน (Insulators)]</button>
+                <button class="filter-btn active" data-filter="crossarm" style="border-left: 4px solid #daa520;">[คอนเสา (Cross-arms)]</button>
+                <button class="filter-btn active" data-filter="fuse" style="border-left: 4px solid #ba55d3;">[ฐานฟิวส์ (Fuse Holders)]</button>
+                <button class="filter-btn active" data-filter="all">[แสดงทั้งหมด]</button>
+            </div>
+
+            <div class="thumbnail-panel">
+                <img id="thumbnail-img" src="" alt="Thumbnail" style="display: none;">
+                <div class="thumbnail-placeholder">อัปโหลดภาพ</div>
+            </div>
+
+            <div class="stats-panel">
+                <div class="stat-row">
+                    <span class="stat-label">ประเภท<br>(Category)</span>
+                    <span class="stat-value" id="stat-category">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">จำนวน</span>
+                    <span class="stat-value" id="stat-count">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">รายละเอียด</span>
+                    <span class="stat-value" id="stat-details">-</span>
+                </div>
+            </div>
+
+            <div class="status-panel">
+                <div>สถานะระบบ: <span class="status-green" id="system-status">รอการอัปโหลด</span></div>
+                <div>ความเชื่อมั่นเฉลี่ย: <span class="status-green" id="confidence-score">-</span></div>
+            </div>
+            
+            <div class="upload-wrapper">
+                <input type="file" id="image-upload" accept="image/*" hidden>
+                <button id="upload-btn" class="upload-btn">อัปโหลดรูปภาพเสาไฟ</button>
+            </div>
+        </aside>
+
+        <!-- Main Display -->
+        <main class="main-content">
+            <div class="image-workspace" id="workspace">
+                 <div class="empty-state">กรุณาอัปโหลดรูปภาพเพื่อเริ่มต้นการตรวจจับ</div>
+                 <img id="main-img" src="" alt="Main View" style="display: none;">
+                 <div id="bounding-boxes-container"></div>
+            </div>
+
+            <!-- Bottom Summary -->
+            <div class="bottom-summary">
+                <h3 class="summary-title">สรุปผลการตรวจจับ (Detection Summary)</h3>
+                <div class="summary-details">
+                    <p id="total-count-text">จำนวนอุปกรณ์ทั้งหมด: 0 ชิ้น</p>
+                    <p id="pole-type-text">ประเภทเสา (ประมาณการ): -</p>
+                </div>
+                <div class="logo-placeholder">✧</div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
